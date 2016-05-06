@@ -1,0 +1,113 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content11"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.yt.androidtv.widget.MainLayout
+        android:id="@+id/main_lay"
+        android:paddingRight="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.yt.androidtv.widget.ReflectItemView
+            android:id="@+id/gridview_lay"
+            android:layout_width="840px"
+            android:layout_height="394px"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true" >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/mainview_tuijian" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="bottom"
+                    android:background="#50000000"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="GridView测试"
+                    android:textColor="#FFFFFF" />
+            </FrameLayout>
+        </com.yt.androidtv.widget.ReflectItemView>
+
+        <com.yt.androidtv.widget.ReflectItemView
+            android:id="@+id/listview_lay"
+            android:layout_width="404px"
+            android:layout_height="246px"
+            android:layout_margin="20dp"
+            android:layout_centerInParent="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true" >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/mainview_searchsong" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="bottom"
+                    android:background="#FF0000"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="listview 测试"
+                    android:textColor="#ffffff" />
+            </FrameLayout>
+        </com.yt.androidtv.widget.ReflectItemView>
+
+
+
+
+
+        <com.yt.androidtv.widget.ReflectItemView
+            android:id="@+id/class_lay"
+            android:layout_width="404px"
+            android:layout_height="246px"
+            android:layout_margin="20dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/mainview_type" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="bottom"
+                android:background="#50000000"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="VideoView测试"
+                android:textColor="#FFFFFF" />
+        </com.yt.androidtv.widget.ReflectItemView>
+
+
+
+    </com.yt.androidtv.widget.MainLayout>
+
+    <!-- 最顶层边框 -->
+
+    <com.yt.androidtv.widget.ViewBorder
+        android:id="@+id/mainUpView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <com.yt.androidtv.widget.ReflectItemView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:focusableInTouchMode="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mainview_tuijian" />
+
+            <TextView
+                android:id="@+id/activity_main_test_listview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="#af3ba4"
+                android:textSize="20sp"
+                android:text="test MyApp"/>
+        </com.yt.androidtv.widget.ReflectItemView>
+
+        <com.yt.androidtv.widget.ReflectItemView
+            android:id="@+id/activity_main_test_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <RelativeLayout
+                android:layout_width="404px"
+                android:layout_height="246px">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/mainview_searchsong" />
+
+                <TextView
+                    android:id="@+id/activity_main_test_gridview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:focusable="false"
+                    android:textColor="#af3ba4"
+                    android:textSize="20sp"
+                    android:text="test GridView"/>
+
+                <com.yt.androidtv.widget.LabelView
+                    xmlns:lv="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    lv:lv_background_color="#ab5763"
+                    lv:lv_text_color="#d6d4d4"
+                    lv:lv_text="热门"
+                    lv:lv_gravity="TOP_RIGHT"/>
+            </RelativeLayout>
+        </com.yt.androidtv.widget.ReflectItemView>
+
+        <com.yt.androidtv.widget.ReflectItemView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:focusableInTouchMode="true"
+            android:layout_margin="30dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mainview_type" />
+
+            <TextView
+                android:id="@+id/activity_main_test_videoview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="#efe5ee"
+                android:textSize="20sp"
+                android:text="VideoView test"/>
+
+        </com.yt.androidtv.widget.ReflectItemView>
+    </RelativeLayout>
+
+    <com.yt.androidtv.widget.ViewBorder
+        android:id="@+id/mainUpView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

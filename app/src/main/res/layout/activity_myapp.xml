@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false">
+
+    <com.yt.androidtv.widget.SmoothVorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <com.yt.androidtv.widget.SmoothGridView
+                android:id="@+id/activity_myapp_gridview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:clipChildren="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center_vertical"
+                android:horizontalSpacing="6dp"
+                android:numColumns="5"
+                android:scrollbars="none"
+                android:verticalSpacing="6dp" />
+        </RelativeLayout>
+    </com.yt.androidtv.widget.SmoothVorizontalScrollView>
+
+    <com.yt.androidtv.widget.ViewBorder
+        android:id="@+id/activity_myapp_viewborder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
