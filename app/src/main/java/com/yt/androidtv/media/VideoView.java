@@ -534,6 +534,27 @@ public class VideoView extends SurfaceView implements MediaController.MediaPlaye
 
     private MediaPlayer.OnInfoListener mInfoListener = new MediaPlayer.OnInfoListener() {
                 public  boolean onInfo(MediaPlayer mp, int arg1, int arg2) {
+//                    switch (arg1) {
+//                        case MediaPlayer.MEDIA_INFO_BUFFERING_START:
+//                            //开始缓存，暂停播放
+//                            if (isPlaying()) {
+////                                stopPlayer();
+////                                needResume = true;
+//                            }
+////                            mLoadingView.setVisibility(View.VISIBLE);
+//                            break;
+//                        case MediaPlayer.MEDIA_INFO_BUFFERING_END:
+//                            //缓存完成，继续播放
+////                            if (needResume)
+////                                startPlayer();
+////                            mLoadingView.setVisibility(View.GONE);
+//                            break;
+//                        case MediaPlayer.MEDIA_INFO_DOWNLOAD_RATE_CHANGED:
+//                            //显示 下载速度
+////                            Logger.e("download rate:" + arg2);
+//                            break;
+//                    }
+                    System.out.println("OnInfoListener arg1:"+arg1+"  arg2:"+arg2);
                     if (mOnInfoListener != null) {
                         mOnInfoListener.onInfo(mp, arg1, arg2);
                     }
