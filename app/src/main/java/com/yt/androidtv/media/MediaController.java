@@ -30,6 +30,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
@@ -232,7 +233,6 @@ public class MediaController extends FrameLayout {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT
         );
-
         removeAllViews();
         View v = makeControllerView();
         addView(v, frameParams);
@@ -361,11 +361,12 @@ public class MediaController extends FrameLayout {
             }
             disableUnsupportedButtons();
 
-            LayoutParams tlp = new LayoutParams(
+            RelativeLayout.LayoutParams tlp = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                Gravity.BOTTOM
+                ViewGroup.LayoutParams.WRAP_CONTENT
             );
+
+            tlp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
 
             mAnchor.addView(this, tlp);
             mShowing = true;
@@ -396,14 +397,15 @@ public class MediaController extends FrameLayout {
         if (mAnchor == null) {
             return;
         }
-
-        try {
-            mAnchor.removeView(this);
-            mHandler.removeMessages(SHOW_PROGRESS);
-        } catch (IllegalArgumentException ex) {
-            Log.w("MediaController", "already removed");
+        if (mShowing) {
+            try {
+                mAnchor.removeView(this);
+                mHandler.removeMessages(SHOW_PROGRESS);
+            } catch (IllegalArgumentException ex) {
+                Log.w("MediaController", "already removed");
+            }
+            mShowing = false;
         }
-        mShowing = false;
     }
 
     private String stringForTime(int timeMs) {

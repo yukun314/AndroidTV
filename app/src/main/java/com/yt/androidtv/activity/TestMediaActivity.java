@@ -1,31 +1,28 @@
 package com.yt.androidtv.activity;
 
 import android.app.Activity;
-import android.app.Notification;
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
+//import android.widget.MediaController;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
+//import android.widget.VideoView;
 
 import com.yt.androidtv.R;
 import com.yt.androidtv.media.MediaController;
+import com.yt.androidtv.media.Video;
 import com.yt.androidtv.media.VideoView;
 
-public class TestMediaActivity extends Activity implements MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, MediaPlayer.OnPreparedListener, View.OnTouchListener {
+public class TestMediaActivity extends Activity implements MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, MediaPlayer.OnPreparedListener{
 
     /**
      * View播放
      */
-    private VideoView videoView;
+    private VideoView mVideoView;
 
     /**
      * 加载预览进度条
@@ -69,25 +66,25 @@ public class TestMediaActivity extends Activity implements MediaPlayer.OnComplet
         //初始化进度条
         progressBar= (ProgressBar) findViewById(R.id.progressBar);
         //初始化VideoView
-        videoView= (VideoView) findViewById(R.id.videoView);
+        mVideoView = (VideoView) findViewById(R.id.videoView);
         //初始化videoview控制条
         mediaController=new MediaController(this);
         //设置videoview的控制条
-        videoView.setMediaController(mediaController);
+        mVideoView.mVideo.setMediaController(mediaController);
         //设置显示控制条
         mediaController.show(0);
         //设置播放完成以后监听
-        videoView.setOnCompletionListener(this);
+        mVideoView.mVideo.setOnCompletionListener(this);
         //设置发生错误监听，如果不设置videoview会向用户提示发生错误
-        videoView.setOnErrorListener(this);
+        mVideoView.mVideo.setOnErrorListener(this);
         //设置在视频文件在加载完毕以后的回调函数
-        videoView.setOnPreparedListener(this);
+        mVideoView.mVideo.setOnPreparedListener(this);
         //设置videoView的点击监听
-        videoView.setOnTouchListener(this);
+//        videoView.setOnTouchListener(this);
         //设置网络视频路径
 //        Uri uri=Uri.parse("http://zhibo.uotocom.com:9000/hls/3012/index.m3u8");
         Uri uri = Uri.parse("rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov");
-        videoView.setVideoURI(uri);
+        mVideoView.mVideo.setVideoURI(uri);
         //设置为全屏模式播放
         setVideoViewLayoutParams(1);
     }
@@ -95,9 +92,9 @@ public class TestMediaActivity extends Activity implements MediaPlayer.OnComplet
     protected void onStart() {
         super.onStart();
         //启动视频播放
-        videoView.start();
+        mVideoView.mVideo.start();
         //设置获取焦点
-        videoView.setFocusable(true);
+        mVideoView.mVideo.setFocusable(true);
 
     }
     /**
@@ -186,28 +183,15 @@ public class TestMediaActivity extends Activity implements MediaPlayer.OnComplet
     }
 
     /**
-     * 对videoView的触摸监听
-     * @param v
-     * @param event
-     * @return
-     */
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        return false;
-    }
-
-
-
-    /**
      * 页面暂停效果处理
      */
     @Override
     protected  void onPause() {
         super.onPause();
         //如果当前页面暂定则保存当前播放位置，并暂停
-        intPositionWhenPause=videoView.getCurrentPosition();
+        intPositionWhenPause= mVideoView.mVideo.getCurrentPosition();
         //停止回放视频文件
-        videoView.stopPlayback();
+        mVideoView.mVideo.stopPlayback();
     }
 
     /**
@@ -218,7 +202,7 @@ public class TestMediaActivity extends Activity implements MediaPlayer.OnComplet
         super.onResume();
         //跳转到暂停时保存的位置
         if(intPositionWhenPause>=0){
-            videoView.seekTo(intPositionWhenPause);
+            mVideoView.mVideo.seekTo(intPositionWhenPause);
             //初始播放位置
             intPositionWhenPause=-1;
         }
@@ -227,8 +211,8 @@ public class TestMediaActivity extends Activity implements MediaPlayer.OnComplet
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(null!=videoView){
-            videoView=null;
+        if(null!= mVideoView.mVideo){
+            mVideoView.mVideo =null;
         }
     }
 
